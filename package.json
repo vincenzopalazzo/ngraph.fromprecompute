@@ -1,0 +1,23 @@
+{
+  "name": "ngraph.fromprecompute",
+  "version": "0.1.0",
+  "description": "The ngraph submodule for convert the result of precumpute layout",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vincenzopalazzo/ngraph.fromprecompute.git"
+  },
+  "keywords": [
+    "ngraph",
+    "layout"
+  ],
+  "author": "vincenzopalazzo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vincenzopalazzo/ngraph.fromprecompute/issues"
+  },
+  "homepage": "https://github.com/vincenzopalazzo/ngraph.fromprecompute#readme"
+}
