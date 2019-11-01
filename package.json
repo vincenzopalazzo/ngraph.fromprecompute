@@ -4,6 +4,7 @@
   "description": "The ngraph submodule for convert the result of precumpute layout",
   "main": "index.js",
   "scripts": {
+    "build": "node_modules/.bin/browserify -s ngraph ./docs/app/scripts/index.js -p esmify > ./docs/app/scripts/bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -19,5 +20,16 @@
   "bugs": {
     "url": "https://github.com/vincenzopalazzo/ngraph.fromprecompute/issues"
   },
-  "homepage": "https://github.com/vincenzopalazzo/ngraph.fromprecompute#readme"
+  "homepage": "https://github.com/vincenzopalazzo/ngraph.fromprecompute#readme",
+  "dependencies": {
+    "browserify": "^16.5.0",
+    "generator-webapp": "^4.0.0-6",
+    "ngraph.graph": "^18.0.3",
+    "ngraph.merge": "^1.0.0",
+    "ngraph.pixi": "0.0.5",
+    "yo": "^3.1.0"
+  },
+  "devDependencies": {
+    "esmify": "^2.1.1"
+  }
 }
