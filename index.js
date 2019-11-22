@@ -16,16 +16,16 @@ import fetch from './lib/loader'
 //Startup https://dev.to/therealdanvega/creating-your-first-npm-package-2ehf
 module.exports = async function convertPrecompute(graph, layout, settings){
 
-    settings = merge(settings,{
+    settings = merge(settings, {
         positionsPos: 'data/positions.bin',
         linksPos: 'data/links.bin',
         labelsPos: 'data/labels.json',
     });
 
     await Promise.all([
-        fetch(settings.positionsPos, { responseType: 'arraybuffer' }).then(toInt32Array),
-        fetch(settings.linksPos, { responseType: 'arraybuffer' }).then(toInt32Array),
-        fetch(settings.labelsPos).then(toJson)
+        fetch(settings.positionsPos, { responseType: 'arraybuffer' }).then(_toInt32Array),
+        fetch(settings.linksPos, { responseType: 'arraybuffer' }).then(_toInt32Array),
+        fetch(settings.labelsPos).then(_atoJson)
       ]).then(loadLayout);
     
     function loadLayout(data){
@@ -33,7 +33,7 @@ module.exports = async function convertPrecompute(graph, layout, settings){
         let links = data[1];
         let labels = data[2];
 
-        graph = initGraphFromLinksAndLabels(links, labels);
+        graph = _initGraphFromLinksAndLabels(links, labels);
 
         labels.forEach(function (label, index) {
             var nodeCount = index * 3;
@@ -44,33 +44,33 @@ module.exports = async function convertPrecompute(graph, layout, settings){
             layout.setNodePosition(label, x, y, z);
         });
     }
-
-    function initGraphFromLinksAndLabels(links, labels) {
-        let srcIndex;
-      
-        let g = createGraph({ uniqueLinkId: false });
-        labels.forEach(label => g.addNode(label));
-        links.forEach(processLink);
-      
-        return g;
-      
-        function processLink(link) {
-          if (link < 0) {
-            srcIndex = -link - 1;
-          } else {
-            var toNode = link - 1;
-            var fromId = labels[srcIndex];
-            var toId = labels[toNode];
-            graph.addLink(fromId, toId);
-          }
-        }
-      }
 }
 
-function toInt32Array(oReq) {
+function _initGraphFromLinksAndLabels(links, labels) {
+  let srcIndex;
+
+  let g = createGraph({ uniqueLinkId: false });
+  labels.forEach(label => g.addNode(label));
+  links.forEach(processLink);
+
+  return g;
+
+  function processLink(link) {
+    if (link < 0) {
+      srcIndex = -link - 1;
+    } else {
+      var toNode = link - 1;
+      var fromId = labels[srcIndex];
+      var toId = labels[toNode];
+      graph.addLink(fromId, toId);
+    }
+  }
+}
+
+function _toInt32Array(oReq) {
     return new Int32Array(oReq.response);
 }
   
-function toJson(oReq) {
+function _toJson(oReq) {
     return JSON.parse(oReq.responseText);
   }

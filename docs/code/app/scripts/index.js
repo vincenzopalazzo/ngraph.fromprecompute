@@ -15,7 +15,7 @@ import createGraph from 'ngraph.graph'
 
 module.exports.main = function () {
 
-    let convertPrecompute = require('../../../');
+    let convertPrecompute = require('../../../../');
   
     let graph = createGraph();
     let pixiGraphics = createPixiGraphics(graph);
