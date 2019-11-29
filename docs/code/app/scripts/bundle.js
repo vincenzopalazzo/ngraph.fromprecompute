@@ -49,7 +49,6 @@ var _loader = _interopRequireDefault(require("./lib/loader"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-//Startup https://dev.to/therealdanvega/creating-your-first-npm-package-2ehf
 module.exports = async function convertPrecompute(graph, layout, settings) {
   settings = (0, _ngraph.default)(settings, {
     positionsPos: 'data/positions.bin',

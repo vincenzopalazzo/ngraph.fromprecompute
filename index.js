@@ -13,7 +13,6 @@ import merge from 'ngraph.merge'
 import createGraph from 'ngraph.graph'
 import fetch from './lib/loader'
 
-//Startup https://dev.to/therealdanvega/creating-your-first-npm-package-2ehf
 module.exports = async function convertPrecompute(graph, layout, settings){
 
     settings = merge(settings, {
