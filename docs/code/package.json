@@ -4,6 +4,7 @@
     "node": ">=4"
   },
   "dependencies": {
+    "ngraph.pixel": "^2.4.1",
     "regenerator-runtime": "^0.13.3"
   },
   "devDependencies": {

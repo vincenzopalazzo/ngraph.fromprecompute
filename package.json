@@ -1,6 +1,6 @@
 {
   "name": "ngraph.fromprecompute",
-  "version": "0.0.2",
+  "version": "0.0.8",
   "description": "The ngraph submodule for convert the result of precumpute layout",
   "main": "index.js",
   "scripts": {
@@ -22,7 +22,8 @@
   },
   "homepage": "https://github.com/vincenzopalazzo/ngraph.fromprecompute#readme",
   "dependencies": {
-    "ngraph.graph": "^18.0.3"
+    "ngraph.graph": "^18.0.3",
+    "ngraph.merge": "^1.0.0"
   },
   "devDependencies": {
     "esmify": "^2.1.1",

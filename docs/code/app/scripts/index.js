@@ -12,17 +12,32 @@
 import "regenerator-runtime/runtime";
 import createPixiGraphics from 'ngraph.pixi'
 import createGraph from 'ngraph.graph'
+import PIXELRender from 'ngraph.pixel'
 
 module.exports.main = function () {
 
     let convertPrecompute = require('../../../../');
   
     let graph = createGraph();
-    let pixiGraphics = createPixiGraphics(graph);
-    let layout = pixiGraphics.layout;
+   /* let pixiGraphics = createPixiGraphics(graph);
+    let layout = pixiGraphics.layout;*/
+    //let rendererPixel = PIXELRender(graph);
     
-    convertPrecompute(graph, layout);
+    //convertPrecompute(graph, rendererPixel.layout());
     
+    let rendererPromisse = convertPrecompute({
+      CreateRenderer: PIXELRender
+    });
+    
+    let renderer
+    rendererPromisse.then(function(result){
+       console.log(result);
+      renderer = result;
+    })
+
+    renderer.stable(true);
+
+    //rendererPixel.redraw();
     // begin animation loop:
-    pixiGraphics.run();
+    //pixiGraphics.run();
   }
